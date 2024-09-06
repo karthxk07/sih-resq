@@ -22,6 +22,7 @@ const TopBar = () => {
       opacity: 1,
       duration: 0.5,
     });
+
     //     .to(logoRef.current, { opacity: 0, duration: 0.3 }, "-=0.3")
     //     .to(
     //       topBarRef.current,
@@ -42,7 +43,7 @@ const TopBar = () => {
   return (
     <div
       ref={topBarRef}
-      className="backdrop-blur-3xl shadow-inner bg-stone-300/20 mx-auto flex items-center justify-center cursor-pointer w-fit rounded-full p-3 font-suse font-500 font-semibold text-lg "
+      className="backdrop-blur-3xl shadow-inner bg-gradient-to-r from-stone-500/10 to-transparent mx-auto flex items-center justify-center cursor-pointer w-fit rounded-full p-3 font-suse font-500 font-semibold text-lg "
     >
       <div className="w-full flex flex-row justify-around h-11 ">
         <div className="overflow-hidden ">
