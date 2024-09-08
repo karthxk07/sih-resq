@@ -3,6 +3,7 @@ import CountdownTimer from "./Components/CountdownComponent";
 import TopBar from "./Components/Topbar";
 import { gsap } from "gsap";
 import { TextPlugin } from "gsap/all";
+import "./app.css";
 
 export default () => {
   useEffect(() => {
@@ -10,15 +11,19 @@ export default () => {
     const tl = gsap.timeline({ delay: 0.5 });
 
     tl.to("#text", { duration: 0.7, text: "Res" });
-    tl.to("#innerText", { duration: 0.1, text: "Q" });
-    tl.to("#cursor", { duration: 0.5, text: "." });
+    tl.to("#button", { width: "100%" }, "<");
+    tl.to("#button2", { width: "100%" }, "<");
+    tl.to("#innerText", { duration: 0.1, text: "Q" }, "<");
+    tl.to("#cursor", { duration: 0.5, text: "." }, "<");
+    tl.to("#button", { text: "About", duration: 0.7 }, "<0.2");
+    tl.to("#button2", { text: "Products", duration: 0.7 }, "<0.2");
   }, []);
   return (
     <>
       <div className="bg-dark   h-screen w-full relative">
-        <div className="absolute  start-0 -translate-x-1/4 top-1/4  -translate-y-1/2 z-50 bg-accent blur-[220px] h-[25rem] w-[25rem] rounded-full"></div>
+        <div className="absolute  start-0 -translate-x-1/4 top-1/4  -translate-y-1/2 z-0 bg-accent blur-[220px] h-[25rem] w-[25rem] rounded-full"></div>
 
-        <div className="absolute  end-14 -translate-x-1/4 top-3/4  -translate-y-1/2 z-50 bg-accent blur-[300px] h-[25rem] w-[25rem] rounded-full"></div>
+        <div className="absolute  end-14 -translate-x-1/4 top-3/4  -translate-y-1/2 z-0 bg-accent blur-[300px] h-[25rem] w-[25rem] rounded-full"></div>
         <div className="absolute start-1/2 -translate-x-1/2 w-full top-0 mt-5 z-0">
           <TopBar />
         </div>
@@ -41,12 +46,12 @@ export default () => {
                 |
               </span>
             </p>
-            <p className="text-transparent bg-gradient-to-r from-accent to-light bg-clip-text font-playfair mb-3 text-[20px]">
-              We're coming soon
+            <p className="text-transparent bg-gradient-to-r from-accent to-light bg-clip-text font-playfair mb-3 text-[15px]">
+              We're coming soon with our first prototypes
             </p>
             <p>
               <CountdownTimer
-                targetDate={new Date("2024-09-10T00:00:00").getTime()}
+                targetDate={new Date("2024-09-15T00:00:00").getTime()}
               />
             </p>
             <div className="flex flex-row mt-8">
@@ -80,13 +85,33 @@ export default () => {
                   natural calamities.
                 </p>
               </div>
-              <div className="flex-col flex flex-grow p-5 gap-y-5">
-                <a className="w-full h-1/2 bg-gradient-to-r from-light via-primary to-transparent rounded-2xl  hover:to-primary text-2xl font-suse font-bold text-dark">
-                  About
+              <div className="flex-col flex flex-grow p-5 gap-y-10 items-center ">
+                <a
+                  class="relative"
+                  href="#"
+                  className=" relative w-full flex-grow"
+                >
+                  <span class="absolute top-0 left-0 mt-1 ml-1 h-full w-full rounded bg-black"></span>
+                  <span
+                    id="button"
+                    class="fold-bold font-playfair italic justify-center items-center   relative flex h-full w-0 overflow-hidden rounded border-2 border-black bg-light px-3 py-1 text-xl font-bold text-black transition duration-300 ease-in-out hover:bg-dark hover:text-light hover:-translate-x-0 hover:-translate-y-0 -translate-x-2 -translate-y-2"
+                  >
+                    |
+                  </span>
                 </a>
-                <button className="w-full h-1/2 bg-gradient-to-r from-light via-primary to-transparent rounded-2xl ">
-                  Products
-                </button>
+                <a
+                  class="relative"
+                  href="#"
+                  className=" relative w-full flex-grow"
+                >
+                  <span class="absolute top-0 left-0 mt-1 ml-1 h-full w-full rounded bg-black"></span>
+                  <span
+                    id="button2"
+                    class="fold-bold font-playfair italic justify-center items-center   relative flex h-full w-0 overflow-hidden rounded border-2 border-black bg-light px-3 py-1 text-xl font-bold text-black transition duration-300 ease-in-out hover:bg-dark hover:text-light hover:-translate-x-0 hover:-translate-y-0 -translate-x-2 -translate-y-2"
+                  >
+                    |
+                  </span>
+                </a>
               </div>
             </div>
           </div>
