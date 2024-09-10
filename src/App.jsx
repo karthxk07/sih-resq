@@ -86,28 +86,20 @@ export default () => {
                 </p>
               </div>
               <div className="flex-col flex flex-grow p-5 gap-y-10 items-center ">
-                <a
-                  class="relative"
-                  href="#"
-                  className=" relative w-full flex-grow"
-                >
-                  <span class="absolute top-0 left-0 mt-1 ml-1 h-full w-full rounded bg-black"></span>
+                <a href="#" className=" relative w-full flex-grow">
+                  <span className="absolute top-0 left-0 mt-1 ml-1 h-full w-full rounded bg-black"></span>
                   <span
                     id="button"
-                    class="fold-bold font-playfair italic justify-center items-center   relative flex h-full w-0 overflow-hidden rounded border-2 border-black bg-light px-3 py-1 text-xl font-bold text-black transition duration-300 ease-in-out hover:bg-dark hover:text-light hover:-translate-x-0 hover:-translate-y-0 -translate-x-2 -translate-y-2"
+                    className="fold-bold font-playfair italic justify-center items-center   relative flex h-full w-0 overflow-hidden rounded border-2 border-black bg-light px-3 py-1 text-xl font-bold text-black transition duration-300 ease-in-out hover:bg-dark hover:text-light hover:-translate-x-0 hover:-translate-y-0 -translate-x-2 -translate-y-2"
                   >
                     |
                   </span>
                 </a>
-                <a
-                  class="relative"
-                  href="#"
-                  className=" relative w-full flex-grow"
-                >
-                  <span class="absolute top-0 left-0 mt-1 ml-1 h-full w-full rounded bg-black"></span>
+                <a href="#" className=" relative w-full flex-grow">
+                  <span className="absolute top-0 left-0 mt-1 ml-1 h-full w-full rounded bg-black"></span>
                   <span
                     id="button2"
-                    class="fold-bold font-playfair italic justify-center items-center   relative flex h-full w-0 overflow-hidden rounded border-2 border-black bg-light px-3 py-1 text-xl font-bold text-black transition duration-300 ease-in-out hover:bg-dark hover:text-light hover:-translate-x-0 hover:-translate-y-0 -translate-x-2 -translate-y-2"
+                    className="fold-bold font-playfair italic justify-center items-center   relative flex h-full w-0 overflow-hidden rounded border-2 border-black bg-light px-3 py-1 text-xl font-bold text-black transition duration-300 ease-in-out hover:bg-dark hover:text-light hover:-translate-x-0 hover:-translate-y-0 -translate-x-2 -translate-y-2"
                   >
                     |
                   </span>
