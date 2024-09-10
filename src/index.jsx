@@ -4,6 +4,7 @@ import "./global.css";
 import {
   BrowserRouter,
   createBrowserRouter,
+  HashRouter,
   Route,
   RouterProvider,
   Routes,
@@ -25,10 +26,10 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
+  <HashRouterRouter>
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/map" element={<MapView />} />
     </Routes>
-  </BrowserRouter>
+  </HashRouterRouter>
 );
