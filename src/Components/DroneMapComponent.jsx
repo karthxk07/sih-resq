@@ -17,7 +17,8 @@ const DroneMap = ({ droneData }) => {
     <MapContainer
       center={defaultCenter}
       zoom={13}
-      style={{ height: "400px", width: "100%" }}
+      zoomControl={false}
+      style={{ height: "100%", width: "100%" }}
     >
       {/* Add a TileLayer to load and display map tiles */}
       <TileLayer

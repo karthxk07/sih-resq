@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { Link } from "react-router-dom";
 
 const TopBar = () => {
   const topBarRef = useRef(null);
@@ -61,7 +62,7 @@ const TopBar = () => {
             id="listItem"
             className="text-accent py-2 hover:underline hidden  translate-y-full"
           >
-            About
+            <Link to="drone">Drone</Link>
           </a>
         </div>
       </div>
@@ -74,20 +75,18 @@ const TopBar = () => {
       <div className="w-full flex flex-row justify-around h-11">
         <div className="overflow-hidden">
           <a
-            href="#"
             id="listItem"
             className="text-light py-2 hover:underline hidden  translate-y-full "
           >
-            Contact
+            <Link to="/map">Map</Link>
           </a>
         </div>
         <div className="overflow-hidden">
           <a
-            href="#"
             id="listItem"
             className="text-light py-2 hover:underline hidden  translate-y-full"
           >
-            Products
+            <Link to="products">Products</Link>
           </a>
         </div>
       </div>
