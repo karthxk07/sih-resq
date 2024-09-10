@@ -1,19 +1,21 @@
 import React from "react";
-import DroneMap from "../Components/DroneMapComponent";
+import DroneMap from "./DroneMap";
 
-// Define the main component to render the map
-const MapView = () => {
-  // Simulate GPS location and human count received from the drone
-  const gpsLocation = [12.8406, 80.1534]; // Replace with actual GPS coordinates
-  const humanCount = 5; // Replace with actual count from deep learning model
+const App = () => {
+  // Example array of GPS locations and human counts received from drone
+  const droneData = [
+    { gpsLocation: [51.505, -0.09], humanCount: 5 },
+    { gpsLocation: [51.515, -0.1], humanCount: 2 },
+    { gpsLocation: [51.52, -0.11], humanCount: 8 },
+  ];
 
   return (
     <div>
       <h1>Drone Search Operation Map</h1>
-      {/* Pass the GPS location and human count to the DroneMap component */}
-      <DroneMap gpsLocation={gpsLocation} humanCount={humanCount} />
+      {/* Pass the drone data array to the DroneMap component */}
+      <DroneMap droneData={droneData} />
     </div>
   );
 };
 
-export default MapView;
+export default App;
