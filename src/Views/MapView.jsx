@@ -1,5 +1,5 @@
 import React from "react";
-import DroneMap from "./DroneMap";
+import DroneMap from "../Components/DroneMapComponent";
 
 const App = () => {
   // Example array of GPS locations and human counts received from drone
