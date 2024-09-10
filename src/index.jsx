@@ -26,10 +26,10 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <HashRouterRouter>
+  <HashRouter>
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/map" element={<MapView />} />
     </Routes>
-  </HashRouterRouter>
+  </HashRouter>
 );
