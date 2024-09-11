@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const App = () => {
   // Example array of GPS locations and human counts received from drone
   const droneData = [
-    { gpsLocation: [12.848984, 80.149537], humanCount: 5 },
+    { gpsLocation: [12.844102, 80.155677], humanCount: 5 },
     { gpsLocation: [12.842498, 80.157391], humanCount: 2 },
     { gpsLocation: [12.843837, 80.153142], humanCount: 8 },
   ];
