@@ -16,7 +16,7 @@ const DroneMap = ({ droneData }) => {
   return (
     <MapContainer
       center={defaultCenter}
-      zoom={13}
+      zoom={20}
       zoomControl={false}
       style={{ height: "100%", width: "100%" }}
     >
