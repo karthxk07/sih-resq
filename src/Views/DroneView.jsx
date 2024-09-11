@@ -1,82 +1,56 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Thermometer, Droplets } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Scrollbar } from "react-scrollbars-custom";
 
 const DroneCriticalsPage = () => {
-  const dummyTemperatureHumidityLog = {
-    logs: [
-      {
-        id: 1,
-        timestamp: "2024-09-11 08:00:00",
-        temperature: 22.5,
-        humidity: 45,
-      },
-      {
-        id: 2,
-        timestamp: "2024-09-11 08:05:00",
-        temperature: 22.7,
-        humidity: 46,
-      },
-      {
-        id: 3,
-        timestamp: "2024-09-11 08:10:00",
-        temperature: 23.0,
-        humidity: 47,
-      },
-      {
-        id: 4,
-        timestamp: "2024-09-11 08:15:00",
-        temperature: 23.2,
-        humidity: 48,
-      },
-      {
-        id: 5,
-        timestamp: "2024-09-11 08:20:00",
-        temperature: 23.5,
-        humidity: 47,
-      },
-      {
-        id: 6,
-        timestamp: "2024-09-11 08:25:00",
-        temperature: 23.8,
-        humidity: 46,
-      },
-      {
-        id: 7,
-        timestamp: "2024-09-11 08:30:00",
-        temperature: 24.0,
-        humidity: 45,
-      },
-      {
-        id: 8,
-        timestamp: "2024-09-11 08:35:00",
-        temperature: 24.2,
-        humidity: 44,
-      },
-      {
-        id: 9,
-        timestamp: "2024-09-11 08:40:00",
-        temperature: 24.5,
-        humidity: 43,
-      },
-      {
-        id: 10,
-        timestamp: "2024-09-11 08:45:00",
-        temperature: 24.8,
-        humidity: 42,
-      },
-    ],
+  const [currentData, setCurrentData] = useState({
+    temperature: 0,
+    humidity: 0,
+  });
+  const [logs, setLogs] = useState([]);
+
+  // Replace with your ThingSpeak channel ID and API key
+  const channelId = "2652393";
+  const apiKey = "MZYYTYR3A04LKOJW";
+
+  const fetchThingSpeakData = async () => {
+    try {
+      const response = await fetch(
+        `https://api.thingspeak.com/channels/${channelId}/feeds/last.json?api_key=${apiKey}`
+      );
+      const data = await response.json();
+
+      const newTemperature = parseFloat(data.field1);
+      const newHumidity = parseFloat(data.field2);
+
+      setCurrentData({ temperature: newTemperature, humidity: newHumidity });
+
+      setLogs((prevLogs) => [
+        {
+          id: Date.now(),
+          timestamp: new Date().toLocaleString(),
+          temperature: newTemperature,
+          humidity: newHumidity,
+        },
+        ...prevLogs.slice(0, 9),
+      ]);
+    } catch (error) {
+      console.error("Error fetching data from ThingSpeak:", error);
+    }
   };
-  // Mock data for temperature and humidity
-  const temperature = 28.5;
-  const humidity = 65;
+
+  useEffect(() => {
+    fetchThingSpeakData(); // Fetch data immediately when component mounts
+    const interval = setInterval(fetchThingSpeakData, 10 * 1000); // Fetch every 5 minutes
+    return () => clearInterval(interval); // Clean up interval on unmount
+  }, []);
 
   return (
     <div className="flex h-screen bg-dark text-[#D8F3DC] pr-16 relative">
       <div className="absolute  start-0 -translate-x-1/4 top-1/4  -translate-y-1/2 z-0 bg-accent blur-[220px] h-[25rem] w-[25rem] rounded-full"></div>
-
       <div className="absolute  end-14 -translate-x-1/4 top-3/4  -translate-y-1/2 z-0 bg-accent blur-[300px] h-[25rem] w-[25rem] rounded-full"></div>
+
       {/* Left side - Drone Image */}
       <div className="z-10 w-1/2 p-8 flex items-center justify-center">
         <img
@@ -101,7 +75,9 @@ const DroneCriticalsPage = () => {
               <Thermometer className="text-[#95D5B2] mr-4" size={32} />
               <h2 className="text-2xl font-suse font-semibold">Temperature</h2>
             </div>
-            <p className="text-5xl font-bold">{temperature}°C</p>
+            <p className="text-5xl font-bold">
+              {currentData.temperature.toFixed(1)}°C
+            </p>
           </div>
 
           {/* Humidity */}
@@ -110,7 +86,9 @@ const DroneCriticalsPage = () => {
               <Droplets className="text-[#95D5B2] mr-4" size={32} />
               <h2 className="text-2xl font-suse font-semibold">Humidity</h2>
             </div>
-            <p className="text-5xl font-bold">{humidity}%</p>
+            <p className="text-5xl font-bold">
+              {currentData.humidity.toFixed(1)}%
+            </p>
           </div>
         </div>
 
@@ -134,7 +112,7 @@ const DroneCriticalsPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {dummyTemperatureHumidityLog.logs.map((log) => (
+                {logs.map((log) => (
                   <tr key={log.id} className="hover:bg-primary/10">
                     <td className="border border-gray-300 px-4 py-2">
                       {log.timestamp}
@@ -143,7 +121,7 @@ const DroneCriticalsPage = () => {
                       {log.temperature.toFixed(1)}
                     </td>
                     <td className="border border-gray-300 px-4 py-2">
-                      {log.humidity}
+                      {log.humidity.toFixed(1)}
                     </td>
                   </tr>
                 ))}

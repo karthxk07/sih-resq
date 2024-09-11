@@ -4,6 +4,7 @@ import TopBar from "./Components/Topbar";
 import { gsap } from "gsap";
 import { TextPlugin } from "gsap/all";
 import "./app.css";
+import { Link } from "react-router-dom";
 
 export default () => {
   useEffect(() => {
@@ -15,7 +16,7 @@ export default () => {
     tl.to("#button2", { width: "100%" }, "<");
     tl.to("#innerText", { duration: 0.1, text: "Q" }, "<");
     tl.to("#cursor", { duration: 0.5, text: "." }, "<");
-    tl.to("#button", { text: "About", duration: 0.7 }, "<0.2");
+    tl.to("#button", { text: "Drone", duration: 0.7 }, "<0.2");
     tl.to("#button2", { text: "Products", duration: 0.7 }, "<0.2");
   }, []);
   return (
@@ -86,7 +87,7 @@ export default () => {
                 </p>
               </div>
               <div className="flex-col flex flex-grow p-5 gap-y-10 items-center ">
-                <a href="#" className=" relative w-full flex-grow">
+                <Link to="drone" className=" relative w-full flex-grow">
                   <span className="absolute top-0 left-0 mt-1 ml-1 h-full w-full rounded bg-black"></span>
                   <span
                     id="button"
@@ -94,8 +95,8 @@ export default () => {
                   >
                     |
                   </span>
-                </a>
-                <a href="#" className=" relative w-full flex-grow">
+                </Link>
+                <Link to="products" className=" relative w-full flex-grow">
                   <span className="absolute top-0 left-0 mt-1 ml-1 h-full w-full rounded bg-black"></span>
                   <span
                     id="button2"
@@ -103,7 +104,7 @@ export default () => {
                   >
                     |
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
